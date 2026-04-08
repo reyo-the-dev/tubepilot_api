@@ -207,7 +207,8 @@ const getInternalProjectById = async (id, includeAllTables) => {
         scenes (*)
         ),
         video_preferences(*),
-        audio_preferences(*)
+        audio_preferences(*),
+        videos(*)
         ${
           includeAllTables
             ? `
@@ -226,7 +227,7 @@ const getInternalProjectById = async (id, includeAllTables) => {
     .single();
 
   if (error) {
-    return res.status(500).json({ success: false, error: error.message });
+    throw new Error(error.message);
   }
 
   const responseData = {
@@ -235,6 +236,7 @@ const getInternalProjectById = async (id, includeAllTables) => {
     script: data.scripts[0],
     video_preferences: data?.video_preferences?.[0] || null,
     audio_preferences: data?.audio_preferences?.[0] || null,
+    video: data?.videos || null,
   };
 
   return responseData;

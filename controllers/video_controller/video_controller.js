@@ -80,73 +80,6 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
   fs.writeFileSync(assPath, ass);
 };
 
-// const renderScenes = (sceneMap, imagesDir, outputVideo) => {
-//   return new Promise((resolve, reject) => {
-//     const command = ffmpeg();
-
-//     sceneMap.forEach((scene) => {
-//       command.input(path.join(imagesDir, `scene_${scene.id}.jpg`));
-//     });
-
-//     const filters = [];
-
-//     sceneMap.forEach((scene, i) => {
-//       const frames = Math.floor(scene.duration * FPS);
-
-//       filters.push({
-//         filter: "scale",
-//         options: "2160:3840",
-//         inputs: `${i}:v`,
-//         outputs: `scaled${i}`,
-//       });
-
-//       filters.push({
-//         filter: "zoompan",
-//         options: {
-//           z: "min(zoom+0.0015,1.5)",
-//           d: frames,
-//           s: `${WIDTH}x${HEIGHT}`,
-//           fps: FPS,
-//           x: "iw/2-(iw/zoom/2)",
-//           y: "ih/2-(ih/zoom/2)",
-//         },
-//         inputs: `scaled${i}`,
-//         outputs: `zoom${i}`,
-//       });
-
-//       filters.push({
-//         filter: "setpts",
-//         options: "PTS-STARTPTS",
-//         inputs: `zoom${i}`,
-//         outputs: `v${i}`,
-//       });
-//     });
-
-//     const concatInputs = sceneMap.map((_, i) => `v${i}`);
-
-//     filters.push({
-//       filter: "concat",
-//       options: { n: sceneMap.length, v: 1, a: 0 },
-//       inputs: concatInputs,
-//       outputs: "vout",
-//     });
-
-//     command
-//       .complexFilter(filters)
-//       .outputOptions([
-//         "-map [vout]",
-//         "-c:v libx264",
-//         "-pix_fmt yuv420p",
-//         "-r 25",
-//         "-y",
-//       ])
-//       .output(outputVideo)
-//       .on("end", resolve)
-//       .on("error", reject)
-//       .run();
-//   });
-// };
-
 const renderScenes = (sceneMap, _, outputVideo) => {
   return new Promise((resolve, reject) => {
     const command = ffmpeg();
@@ -155,17 +88,9 @@ const renderScenes = (sceneMap, _, outputVideo) => {
     sceneMap.forEach((scene, i) => {
       command.input(scene.image);
       command.inputOptions(["-loop 1", `-t ${scene.duration}`, `-r ${FPS}`]);
-      // 1. scale
-      // filters.push({
-      //   filter: "scale",
-      //   options: `${WIDTH}:${HEIGHT}`,
-      //   inputs: `${i}:v`,
-      //   outputs: `scaled${i}`,
-      // });
 
       filters.push({
         filter: "scale",
-        // options: "2160:3840",
         options: `${WIDTH * 2}:${HEIGHT * 2}`,
         inputs: `${i}:v`,
         outputs: `scaled${i}`,

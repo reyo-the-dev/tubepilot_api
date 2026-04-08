@@ -99,12 +99,12 @@ const createJobandGenerateVideo = async (req, res) => {
 
     //-----------------------------------------------------------
 
-    const videoData = await generateVidoFromProjectId(projectId);
+    const videoUrl = await generateVidoFromProjectId(projectId);
 
     return res.status(200).json({
       success: true,
       data: {
-        videoData,
+        videoUrl,
         jobId,
         supabaseAudioUrl,
         transcriptionSaveRes,
@@ -358,11 +358,62 @@ const generateVidoFromProjectId = async (projectId) => {
       audioOptions,
     );
 
-    console.log("Video Generated:", finalVideoPath);
+    const videoUrl = await uploadVideoAndSave(projectId, finalVideoPath);
 
-    return finalVideoPath;
+    return videoUrl;
   } catch (error) {
     console.error("generateVidoFromProjectId Error:", error);
+    throw error;
+  }
+};
+
+const uploadVideoAndSave = async (projectId, finalVideoPath) => {
+  try {
+    // 1. Read video file
+    const fileBuffer = fs.readFileSync(finalVideoPath);
+
+    const fileName = `${projectId}/video/final.mp4`;
+
+    // 2. Upload to Supabase Storage
+    const { error: uploadError } = await supabase.storage
+      .from("project_files")
+      .upload(fileName, fileBuffer, {
+        contentType: "video/mp4",
+        upsert: true, // overwrite if exists
+      });
+
+    if (uploadError) throw uploadError;
+
+    // 3. Get public URL
+    const { data } = supabase.storage
+      .from("project_files")
+      .getPublicUrl(fileName);
+
+    const videoUrl = data.publicUrl;
+
+    // 4. Get file size (optional)
+    const stats = fs.statSync(finalVideoPath);
+
+    // 5. Save to DB (upsert)
+    await supabase.from("videos").upsert(
+      {
+        project_id: projectId,
+        video_url: videoUrl,
+        file_size: stats.size,
+        status: "completed",
+      },
+      { onConflict: "project_id" },
+    );
+
+    // 6. Update project status
+    await supabase
+      .from("projects")
+      .update({ status: "completed" })
+      .eq("id", projectId);
+
+    return videoUrl;
+  } catch (error) {
+    console.error("Upload Video Error:", error);
     throw error;
   }
 };

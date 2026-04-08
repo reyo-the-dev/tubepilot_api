@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/health", (req, res) => {
+  console.log("hchealth check started..");
+
   res.json({ message: "Healthy" });
 });
 
