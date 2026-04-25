@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body style="margin: 0">
+    <div class="card">
+      <div class="logo"></div>
+      <div class="overlay"></div>
+
+      <div class="text">
+        FOLLOW
+        <br />
+        <span class="highlight">CRYPTO DOSE</span>
+        <br />
+        FOR MORE
+      </div>
+    </div>
+
+    <style>
+      .card {
+        width: 768px;
+        height: 960px;
+        background-image: url("https://ujkcelfopwalsjonkndn.supabase.co/storage/v1/object/public/project_files/cb7c537e-82cc-4c9b-9e9a-7cc357af2c75/images/scene_0.jpg");
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        font-family: "Montserrat", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        box-sizing: border-box;
+      }
+
+      .overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      .logo {
+        position: absolute;
+        background: url("https://ujkcelfopwalsjonkndn.supabase.co/storage/v1/object/public/project_files/crypto_dose_logo_2.png")
+          center/cover no-repeat;
+        height: 150px;
+        width: 150px;
+        bottom: 180px;
+        right: 50%;
+        transform: translateX(50%);
+        z-index: 100;
+      }
+
+      .text {
+        position: relative;
+        color: white;
+        font-size: 70px;
+        /* font-weight: 800; */
+        line-height: 1.2;
+        text-align: center;
+        word-wrap: break-word;
+        font-family: "Anton", sans-serif;
+        max-height: 300px;
+
+        /* background-color: blue; */
+
+        padding: 50px;
+        text-wrap: balance;
+
+        background-color: rgba(0, 0, 0, 0.467);
+        border-radius: 20px;
+      }
+
+      .highlight {
+        color: #fbbf00;
+        letter-spacing: 1px;
+      }
+    </style>
+    <script>
+      function autoResizeText() {
+        const el = document.querySelector(".text");
+
+        let fontSize = 75;
+        const minSize = 14;
+
+        while (fontSize > minSize) {
+          el.style.fontSize = fontSize + "px";
+
+          const isOverflowing =
+            el.scrollHeight > el.clientHeight ||
+            el.scrollWidth > el.clientWidth;
+
+          if (!isOverflowing) break;
+
+          fontSize -= 2;
+        }
+      }
+
+      // 🔥 Wait for fonts + DOM properly
+      document.fonts.ready.then(() => {
+        autoResizeText();
+      });
+    </script>
+  </body>
+</html>

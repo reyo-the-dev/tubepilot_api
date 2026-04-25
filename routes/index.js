@@ -14,5 +14,6 @@ router.use("/script", require("./script.routes.js"));
 
 router.use("/project", require("./project.routes.js"));
 router.use("/job", require("./job.routes.js"));
+router.use("/news", require("./news.routes.js"));
 
 module.exports = router;

@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body style="margin: 0">
+    <div class="card">
+      <div class="tag">Technology</div>
+      <div class="image"></div>
+      <!-- src="https://static.toiimg.com/thumb/resizemode-72,width-1280,height-720,msid-130501997/130501997.jpg" -->
+
+      <img
+        src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/mpx/2704722219/2026_04/vrebaes_v_russi-nygsll.jpg"
+        class="addImg"
+      />
+      <div class="text-wrap">
+        <div class="text">Space Unites Us: Suni Williams' Journey</div>
+        <div class="bottom">
+          <div class="source">Source : TechCrunch</div>
+          <div class="name">@daily_new_and_facts</div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      :root {
+        --highlight-color: #dc2626;
+        --background-color: #111114;
+        --text-primary-color: white;
+        --text-secondary-color: #a0a4af;
+      }
+
+      .card {
+        width: 1024px;
+        height: 1280px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--background-color);
+      }
+
+      .addImg {
+        position: absolute;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+
+      .tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: var(--highlight-color);
+        font-size: 25px;
+        padding: 8px 20px;
+        border-radius: 8px;
+        color: var(--background-color);
+        border: 1px solid #04022729;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .image {
+        background-image: url("https://image.runpod.ai/4/25/he9wukjswM/eff66fc1-0f49-4ee2-935f-9795bcdc59d2.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 768px;
+      }
+
+      .overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .logo {
+        position: absolute;
+        background: url("https://ujkcelfopwalsjonkndn.supabase.co/storage/v1/object/public/project_files/crypto_dose_logo_2.png")
+          center/cover no-repeat;
+        height: 150px;
+        width: 150px;
+        bottom: 180px;
+        right: 50%;
+        transform: translateX(50%);
+        z-index: 100;
+      }
+
+      .text-wrap {
+        background-color: var(--background-color);
+        display: flex;
+        align-items: center;
+        height: 512px;
+        border-top: 2px solid var(--highlight-color);
+        position: relative;
+      }
+
+      .text {
+        color: var(--text-primary-color);
+        line-height: 1.2;
+        text-align: center;
+        word-wrap: break-word;
+        height: fit-content;
+        font-family: "Anton", sans-serif;
+        padding: 70px;
+        padding-top: 35px;
+        text-transform: uppercase;
+      }
+
+      .bottom {
+        position: absolute;
+
+        display: flex;
+        justify-content: space-between;
+        bottom: 0;
+        width: 100%;
+        padding-bottom: 20px;
+      }
+
+      .source {
+        margin-left: 50px;
+        color: var(--text-secondary-color);
+        font-size: 20px;
+      }
+
+      .name {
+        margin-right: 50px;
+        color: var(--highlight-color);
+        font-size: 20px;
+      }
+
+      .highlight,
+      span {
+        color: var(--highlight-color);
+        letter-spacing: 1px;
+      }
+    </style>
+
+    <script>
+      function autoResizeText() {
+        const el = document.querySelector(".text-wrap");
+        const txt = document.querySelector(".text");
+
+        let fontSize = 75;
+        const minSize = 14;
+
+        while (fontSize > minSize) {
+          txt.style.fontSize = fontSize + "px";
+
+          const isOverflowing =
+            el.scrollHeight > el.clientHeight ||
+            el.scrollWidth > el.clientWidth;
+
+          if (!isOverflowing) break;
+
+          fontSize -= 2;
+        }
+      }
+
+      function autoResizeImage() {
+        const addImg = document.querySelector(".addImg");
+
+        const isPortrait = addImg.clientHeight > addImg.clientWidth;
+
+        // console.log();
+
+        if (isPortrait) {
+          addImg.style.height = "500px";
+          addImg.style.width = "auto";
+          addImg.style.top = "278px";
+        } else {
+          addImg.style.width = "500px";
+          addImg.style.height = "auto";
+
+          addImg.style.top = `${768 - addImg.clientHeight}px`;
+          //   addImg.style.top = `${490}px`;
+        }
+      }
+      // 🔥 Wait for fonts + DOM properly
+      document.fonts.ready.then(() => {
+        autoResizeText();
+        autoResizeImage();
+      });
+    </script>
+  </body>
+</html>
