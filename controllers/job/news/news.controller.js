@@ -99,6 +99,8 @@ const genetateSlidesForNews = async (req, res) => {
 
 const generateScriptFromNews = async (req, res) => {
   try {
+    const { isDummy } = req.body;
+
     const data = {
       success: true,
       data: {
@@ -204,7 +206,9 @@ const generateScriptFromNews = async (req, res) => {
       meta: { slideCount: 5, type: "news_carousel", source: "news" },
     };
 
-    script = await internalGenerateScriptFromNews(req.body);
+    if (!isDummy) {
+      script = await internalGenerateScriptFromNews(req.body);
+    }
 
     const meta = script.meta;
 
@@ -230,15 +234,13 @@ const generateScriptFromNews = async (req, res) => {
 
 const generateSlideFromScript = async (req, res) => {
   try {
-    const { script, meta } = req.body;
+    const { script, meta, isDummy } = req.body;
 
     const { slides } = script;
 
     const results = [];
 
     let imageCost = 0;
-
-    const isDummy = true;
 
     const id = v4();
 
