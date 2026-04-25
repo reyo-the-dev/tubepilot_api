@@ -163,7 +163,7 @@ function generateTemplate(
 
   const isOutro = false;
 
-  const name = "@daily_new_and_facts";
+  const name = "@briefonix";
 
   const highlightColor = "#dc2626";
   const backgroundColor = "#111114";
