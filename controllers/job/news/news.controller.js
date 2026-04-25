@@ -238,7 +238,7 @@ const generateSlideFromScript = async (req, res) => {
 
     let imageCost = 0;
 
-    const isDummy = false;
+    const isDummy = true;
 
     const id = v4();
 
