@@ -278,6 +278,8 @@ const generateSlideFromScript = async (req, res) => {
       const slideData = {
         bg: imageRes.output.image_url,
         additionalImage: i == 0 && meta.image_url,
+        sourceName: meta.source_name,
+        category: meta?.category?.[0],
         ...slide,
       };
 

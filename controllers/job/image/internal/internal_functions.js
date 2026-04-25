@@ -84,7 +84,7 @@ async function internalGenerateSlide(
     isUpperCase: false,
   },
 ) {
-  const isLocal = false;
+  const isLocal = process.env.NODE_ENV === "dev";
 
   const browser = await puppeteer.launch(
     isLocal
@@ -144,7 +144,7 @@ function formatTextWithHighlights(words, highlights = [], isUpperCase = false) {
 }
 
 function generateTemplate(
-  { bg, additionalImage, text, highlights = [] },
+  { bg, additionalImage, text, highlights = [], sourceName, category },
   options = {
     isUpperCase: false,
   },
@@ -163,7 +163,6 @@ function generateTemplate(
 
   const isOutro = false;
 
-  const source = "TechCrunch";
   const name = "@daily_new_and_facts";
 
   const highlightColor = "#dc2626";
@@ -192,7 +191,7 @@ function generateTemplate(
 
   <body style="margin: 0">
     <div class="card">
-      <div class="tag">Technology</div>
+      ${category ? `<div class="tag">${category}</div>` : ""}
       <div class="image"></div>
       
       ${additionalImage ? `<img src="${additionalImage}" class="addImg" />` : ""}
@@ -200,11 +199,11 @@ function generateTemplate(
         <div class="text">
           ${formattedText}
         </div>
-
-        <div class="bottom">
-          <div class="source">Source : ${source}</div>
-          <div class="name">${name}</div>
-        </div>
+   <div class="bottom">
+         <div class="source">Source : ${sourceName}</div>
+         <div class="name">${name}</div>
+       </div>
+      
       </div>
     </div>
 
@@ -241,6 +240,7 @@ function generateTemplate(
         border-radius: 8px;
         color: var(--background-color);
         border: 1px solid #04022729;
+        text-transform: capitalize;
       }
 
       .image {
