@@ -1,4 +1,4 @@
-const { v4 } = require("uuid");
+// const { v4 } = require("uuid");
 const { supabase } = require("../config/supabase");
 const { internalGenerateScript } = require("./speechController");
 
@@ -96,8 +96,8 @@ const generateScript = async (req, res) => {
 const createtAndSaveScript = async (req, res) => {
   try {
     const { user } = req;
-    const scriptId = v4();
-    const projectId = v4();
+    const scriptId = "tttt";
+    const projectId = "xxxx";
 
     const { error: projectError } = await supabase.from("projects").insert({
       id: projectId,
