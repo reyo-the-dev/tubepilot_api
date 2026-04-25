@@ -85,7 +85,6 @@ async function internalGenerateSlide(
   },
 ) {
   const isLocal = false;
-  // const isLocal = true;
 
   const browser = await puppeteer.launch(
     isLocal
@@ -95,10 +94,15 @@ async function internalGenerateSlide(
           headless: true,
         }
       : {
-          args: chromium.args,
+          args: [...chromium.args, "--no-sandbox", "--disable-setuid-sandbox"],
           executablePath: await chromium.executablePath(),
           headless: true,
         },
+    //  {
+    //     args: chromium.args,
+    //     executablePath: await chromium.executablePath(),
+    //     headless: true,
+    //   },
   );
 
   const page = await browser.newPage();
