@@ -84,7 +84,7 @@ async function internalGenerateSlide(
     isUpperCase: false,
   },
 ) {
-  const isLocal = process.env.NODE_ENV === "dev";
+  const isLocal = false;
   // const isLocal = true;
 
   const browser = await puppeteer.launch(
