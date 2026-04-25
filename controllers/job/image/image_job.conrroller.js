@@ -1,5 +1,3 @@
-const { createCanvas, loadImage } = require("canvas");
-
 const {
   internalGenerateScriptForSlides,
   internalGenerateSlide,

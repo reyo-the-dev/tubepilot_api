@@ -20,7 +20,6 @@
     "@supabase/supabase-js": "^2.95.3",
     "ai": "^6.0.145",
     "axios": "^1.14.0",
-    "canvas": "^3.2.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "expo-server-sdk": "^6.0.0",
