@@ -85,26 +85,16 @@ const internalGenerateScriptFromNews = async (
       {
         role: "user",
         content: `
-Convert the following NEWS into a viral Instagram carousel.
+Convert the following today in history into a viral Instagram carousel slide content.
 
-NEWS:
-Title: ${news.title}
-Description: ${news.description}
+Event: The 7.0 Mw  Racha earthquake affects Georgia with a maximum MSK intensity of IX (Destructive), killing 270 people.
 
-Requirements:
-- Total slides: ${slideCount}
-- Slide 1 = powerful hook based on the news (max 8 words)
-- Slide 2 = what happened (simple explanation)
-- Slide 3 = why it matters
-- Slide 4 = deeper insight / impact / risk
-- Slide 5 = conclusion or future outlook
-- Keep each slide 1-2 sentences max
-- Avoid jargon, keep it simple
+
 - Tone: engaging, slightly dramatic but factual
 
-For EACH slide return:
+For slide return:
 - text (FULL sentence)
-- highlights (2-4 key phrases)
+- highlights (2-3 key words)
 - image_prompt (cinematic, realistic, no text, high contrast)
 
 Image prompt rules:
@@ -113,18 +103,58 @@ Image prompt rules:
 - Cinematic lighting, dramatic mood
 
 Return ONLY JSON:
-{
-  "topic": "",
-  "slides": [
-    {
+
+   {
       "text": "",
       "highlights": [],
       "image_prompt": ""
     }
-  ]
-}
+
         `,
       },
+      //       {
+      //         role: "user",
+      //         content: `
+      // Convert the following NEWS into a viral Instagram carousel.
+
+      // NEWS:
+      // Title: ${news.title}
+      // Description: ${news.description}
+
+      // Requirements:
+      // - Total slides: ${slideCount}
+      // - Slide 1 = powerful hook based on the news (max 8 words)
+      // - Slide 2 = what happened (simple explanation)
+      // - Slide 3 = why it matters
+      // - Slide 4 = deeper insight / impact / risk
+      // - Slide 5 = conclusion or future outlook
+      // - Keep each slide 1-2 sentences max
+      // - Avoid jargon, keep it simple
+      // - Tone: engaging, slightly dramatic but factual
+
+      // For EACH slide return:
+      // - text (FULL sentence)
+      // - highlights (2-4 key phrases)
+      // - image_prompt (cinematic, realistic, no text, high contrast)
+
+      // Image prompt rules:
+      // - Must reflect real-world context (finance, politics, economy)
+      // - No text inside image
+      // - Cinematic lighting, dramatic mood
+
+      // Return ONLY JSON:
+      // {
+      //   "topic": "",
+      //   "slides": [
+      //     {
+      //       "text": "",
+      //       "highlights": [],
+      //       "image_prompt": ""
+      //     }
+      //   ]
+      // }
+      //         `,
+      //       },
     ],
     temperature: 0.6,
   });

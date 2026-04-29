@@ -1,0 +1,173 @@
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@800;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body style="margin: 0; background-color: rgb(37, 30, 30)">
+    <div class="card">
+      <p>TODAY IN</p>
+      <h2>HISTORY</h2>
+      <img src="./flare.png" />
+      <h1>01</h1>
+      <h1 class="tst">01</h1>
+
+      <small>APRIL</small>
+
+      <div class="bottom">
+        EVERY DAY<span>. </span>EVERY STORY<span>.</span> FORVER
+        <span class="highlight">HISTORY</span>
+      </div>
+    </div>
+
+    <style>
+      :root {
+        --highlight-color: #f2b702;
+        --background-color: #0b0f1a;
+        --text-primary-color: white;
+        --text-secondary-color: #a0a4af;
+        --bg-img: url("./sdr.jpg");
+      }
+
+      .card {
+        width: 1024px;
+        height: 1280px;
+        border: 2px solid var(--highlight-color);
+        background:
+          radial-gradient(rgba(0, 0, 0, 0.6)),
+          radial-gradient(transparent, black), var(--bg-img);
+        background-size: cover;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "Montserrat";
+        position: relative;
+      }
+
+      .bottom {
+        position: absolute;
+        bottom: 25px;
+        font-size: 25px;
+        letter-spacing: 8px;
+      }
+
+      .highlight {
+        color: var(--highlight-color);
+      }
+
+      * {
+        color: white;
+        margin: 0;
+        position: relative;
+        z-index: 100;
+        /* letter-spacing: 40px; */
+      }
+
+      img {
+        position: absolute;
+        width: 1000px;
+        top: 180px;
+        opacity: 0.8;
+      }
+
+      p {
+        font-size: 65px;
+        font-weight: 400;
+        line-height: 0px;
+        text-shadow: 0 0 100px black;
+        letter-spacing: 20px;
+      }
+
+      h2 {
+        font-size: 170px;
+        color: var(--highlight-color);
+
+        background-image: url("./gold.jpg");
+        background-size: cover;
+        background-position: center;
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        /* optional */
+        background-clip: text;
+        color: transparent;
+        font-weight: 800;
+        letter-spacing: -2px;
+      }
+
+      h1 {
+        font-size: 450px;
+        line-height: 400px;
+        /* 0 0 100px var(--highlight-color); */
+        color: white;
+
+        background-image: url("./silver.jpg");
+        background-size: cover;
+        background-position: top;
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        background-clip: text;
+        color: transparent;
+        font-weight: 800;
+      }
+
+      .tst {
+        position: absolute;
+        top: 497px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+        display: block;
+        text-shadow:
+          0px 0px 50px black,
+          0px 0px 70px var(--highlight-color);
+        border-bottom: 1px solid var(--highlight-color);
+      }
+
+      small {
+        font-size: 80px;
+        line-height: 50px;
+        text-shadow: 0 0 100px black;
+        color: var(--highlight-color);
+        font-weight: 600;
+        letter-spacing: 20px;
+        margin-top: 50px;
+      }
+    </style>
+    <script>
+      function autoResizeText() {
+        const el = document.querySelector(".text-wrap");
+        const txt = document.querySelector(".text");
+
+        let fontSize = 75;
+        const minSize = 14;
+
+        while (fontSize > minSize) {
+          txt.style.fontSize = fontSize + "px";
+
+          const isOverflowing =
+            el.scrollHeight > el.clientHeight ||
+            el.scrollWidth > el.clientWidth;
+
+          console.log(isOverflowing);
+
+          if (!isOverflowing) break;
+
+          fontSize -= 2;
+        }
+      }
+
+      // 🔥 Wait for fonts + DOM properly
+      document.fonts.ready.then(() => {
+        autoResizeText();
+      });
+    </script>
+  </body>
+</html>

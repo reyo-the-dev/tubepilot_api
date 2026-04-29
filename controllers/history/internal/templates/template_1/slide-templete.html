@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@800;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body style="margin: 0; background-color: rgb(37, 30, 30)">
+    <div class="card">
+      <div class="image-wrap">
+        <div class="trans"></div>
+        <img src="./sdr.jpg" />
+      </div>
+      <div class="text-wrap">
+        <div class="text">
+          <h1>1992</h1>
+          World War II: Adolf <span>Hitler</span> marries his longtime partner
+          <span>Eva Braun</span> in a Berlin bunker and designates
+          <span>Admiral Karl Dönitz</span> as his successor.
+        </div>
+      </div>
+    </div>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      :root {
+        /* #1f1f1f */
+        --highlight-color: #f2b702;
+        --background-color: #0d0d0d;
+        --text-primary-color: white;
+        --text-secondary-color: #a0a4af;
+        --bg-img: url("bg.png");
+      }
+
+      .card {
+        width: 1024px;
+        height: 1280px;
+        font-family: "Montserrat";
+        position: relative;
+        position: relative;
+      }
+
+      .image-wrap {
+        position: relative;
+      }
+
+      img {
+        height: 768px;
+        width: 100%;
+      }
+
+      .text-wrap {
+        height: 512px;
+        background-color: var(--background-color);
+        border-top: 2px solid var(--highlight-color);
+      }
+
+      .text {
+        color: white;
+        padding: 0px 30px 40px 30px;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0;
+        background-image: url("./gold.jpg");
+        background-size: cover;
+        background-position: center;
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        /* optional */
+        background-clip: text;
+        color: transparent;
+        /* font-size: 100px; */
+      }
+
+      span {
+        color: var(--highlight-color);
+        font-weight: 800;
+
+        background-image: url("./gold.jpg");
+        background-size: cover;
+        background-position: center;
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        /* optional */
+        background-clip: text;
+        color: transparent;
+      }
+    </style>
+    <script>
+      function autoResizeText() {
+        const el = document.querySelector(".text-wrap");
+        const txt = document.querySelector(".text");
+
+        let fontSize = 75;
+        const minSize = 14;
+
+        while (fontSize > minSize) {
+          txt.style.fontSize = fontSize + "px";
+
+          const isOverflowing =
+            el.scrollHeight > el.clientHeight ||
+            el.scrollWidth > el.clientWidth;
+
+          console.log(isOverflowing);
+
+          if (!isOverflowing) break;
+
+          fontSize -= 2;
+        }
+      }
+
+      // 🔥 Wait for fonts + DOM properly
+      document.fonts.ready.then(() => {
+        autoResizeText();
+      });
+    </script>
+  </body>
+</html>

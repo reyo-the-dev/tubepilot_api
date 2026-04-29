@@ -98,11 +98,6 @@ async function internalGenerateSlide(
           executablePath: await chromium.executablePath(),
           headless: true,
         },
-    //  {
-    //     args: chromium.args,
-    //     executablePath: await chromium.executablePath(),
-    //     headless: true,
-    //   },
   );
 
   const page = await browser.newPage();

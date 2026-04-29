@@ -30,21 +30,6 @@ async function generateImage(prompt, width = 720, height = 1280) {
         height,
       },
     },
-    // {
-    //   input: {
-    //     prompt: `${prompt}, bright lighting, well lit, high exposure, vibrant`,
-    //     seed: -1,
-    //     num_inference_steps: 4,
-    //     guidance: 7,
-    //     negative_prompt: `
-    //       dark, low light, dim lighting, underexposed, shadowy, dull,
-    //       low contrast, gloomy, night, poorly lit, grainy, noisy
-    //     `,
-    //     image_format: "jpeg",
-    //     width,
-    //     height,
-    //   },
-    // },
     {
       headers: {
         Authorization: `Bearer ${process.env.RUNPOD_API_KEY}`,
@@ -52,9 +37,6 @@ async function generateImage(prompt, width = 720, height = 1280) {
       },
     },
   );
-
-  console.log(response.data);
-
   return response.data;
 }
 
