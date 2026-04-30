@@ -60,7 +60,18 @@ const generateImageForSlide = async (req, res) => {
 
 const generateSlidesForEvents = async (req, res) => {
   try {
-    const { event, isIntro } = req.body;
+    const { event, isIntro, isOutro } = req.body;
+
+    const outroUrl =
+      "https://ujkcelfopwalsjonkndn.supabase.co/storage/v1/object/public/project_files/history/ba7d9485-d6ab-4544-b016-e4959347f778.png";
+    if (isOutro) {
+      return res.status(200).json({
+        success: true,
+        data: {
+          publicUrl: outroUrl,
+        },
+      });
+    }
 
     const imageBuffer = await internalGenerateSlideForEvent(event, isIntro);
 

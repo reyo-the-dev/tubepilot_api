@@ -140,7 +140,7 @@ function generateTemplate(event, isIntro = false) {
     <div class="card">
       <p>TODAY IN</p>
       <h2>HISTORY</h2>
-      <img src="./flare.png" />
+      <img src="https://ujkcelfopwalsjonkndn.supabase.co/storage/v1/object/public/project_files/pattern/flare.png" />
       <h1>${day}</h1>
       <h1 class="tst">${day}</h1>
 
