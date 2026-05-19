@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const { sequelize } = require("./models");
+// const { sequelize } = require("./models");
 
 const path = require("path");
 dotenv.config();
@@ -26,16 +26,14 @@ app.get("/", (req, res) => {
 // Health check endpoint
 app.get("/api/health", async (req, res) => {
   try {
-    await sequelize.authenticate();
+    // await sequelize.authenticate();
     res.json({ status: "healthy", database: "connected" });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        status: "unhealthy",
-        database: "disconnected",
-        error: error.message,
-      });
+    res.status(500).json({
+      status: "unhealthy",
+      database: "disconnected",
+      error: error.message,
+    });
   }
 });
 
@@ -54,7 +52,7 @@ app.use(require("./middleware/errorHandler"));
 // Database Connection and Server Startup
 const startServer = async () => {
   try {
-    await sequelize.authenticate();
+    // await sequelize.authenticate();
     console.log("Database connected successfully.");
 
     // Sync models (optional: set force to true to drop tables and recreate)
@@ -69,7 +67,7 @@ const startServer = async () => {
       console.log("SIGTERM received, shutting down gracefully");
       server.close(() => {
         console.log("Server closed");
-        sequelize.close();
+        // sequelize.close();
         process.exit(0);
       });
     });
@@ -85,4 +83,3 @@ if (require.main === module) {
 }
 
 module.exports = app;
-

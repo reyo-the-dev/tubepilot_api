@@ -1,8 +1,7 @@
 require("pg");
 require("pg-hstore");
 const app = require("../server");
-const { sequelize } = require("../models");
-
+// const { sequelize } = require("../models");
 
 // Initialize database connection (only once for Vercel)
 let dbInitialized = false;
@@ -10,8 +9,8 @@ let dbInitialized = false;
 const initializeDatabase = async () => {
   if (!dbInitialized) {
     try {
-      await sequelize.authenticate();
-      console.log("Database connected successfully.");
+      // await sequelize.authenticate();
+      // console.log("Database connected successfully.");
       dbInitialized = true;
     } catch (error) {
       console.error("Database connection failed:", error);
@@ -31,4 +30,3 @@ app.use(async (req, res, next) => {
 });
 
 module.exports = app;
-
