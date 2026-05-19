@@ -8,18 +8,18 @@ const { supabase } = require("../../config/supabase");
 
 const generateImageForSlide = async (req, res) => {
   try {
-    console.log("Imgage Generation started...");
+    console.log("Image Generation started...");
 
     const imageRes = await internalGenerateimageForHistorySlide({
       prompt: req.body.imagePrompt,
     });
 
-    console.log("Imgage Generated successfully...");
+    console.log("Image Generated successfully...");
 
     const imageUrl = imageRes.output.image_url;
 
     // ✅ Download image as buffer
-    console.log("Imgage Downloaded...");
+    console.log("Image Downloaded...");
 
     const response = await axios.get(imageUrl, {
       responseType: "arraybuffer",
@@ -32,20 +32,20 @@ const generateImageForSlide = async (req, res) => {
 
     // ✅ Upload buffer
 
-    console.log("Imgage Upload started...");
+    console.log("Image Upload started...");
 
     await supabase.storage.from("project_files").upload(fileName, imageBuffer, {
       contentType: "image/jpeg",
       upsert: true,
     });
 
-    console.log("Imgage Upload success...");
+    console.log("Image Upload success...");
 
     const { data } = supabase.storage
       .from("project_files")
       .getPublicUrl(fileName);
 
-    console.log("Imgage gett url success...");
+    console.log("Image gett url success...");
 
     return res.status(200).json({
       success: true,
@@ -80,21 +80,19 @@ const generateSlidesForEvents = async (req, res) => {
 
     // ✅ Upload buffer
 
-    console.log("Imgage Upload started...");
+    console.log("Image Upload started...");
 
     await supabase.storage.from("project_files").upload(fileName, imageBuffer, {
       contentType: "image/png",
       upsert: true,
     });
 
-    console.log("Imgage Upload success...");
+    console.log("Image Upload success...");
 
     const { data } = supabase.storage
       .from("project_files")
       .getPublicUrl(fileName);
-    console.log("Imgage gett url success...");
-
-    console.log(data);
+    console.log("Image gett url success...");
 
     return res.status(200).json({
       success: true,

@@ -18,4 +18,6 @@ router.use("/project", require("./project.routes.js"));
 router.use("/job", require("./job.routes.js"));
 router.use("/news", require("./news.routes.js"));
 
+router.use("/slide", require("./slide.routes.js"));
+
 module.exports = router;

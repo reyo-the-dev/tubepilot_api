@@ -35,9 +35,6 @@ const internalGenerateScript = async (topic, duration) => {
         role: "user",
         content: `Create a YouTube Shorts script about: ${topic}. Duration: ${duration}s. Scenes: ${sceneCount}. 
         Word count: ~${totalWords}. Return ONLY JSON with fields: title, scenes (array of {scene_number, text, image_prompt}).`,
-        // content: `Create a YouTube Shorts script about: ${topic}. Duration: ${duration}s. Scenes: ${sceneCount}.
-        // Art Style: ${artStyle}.
-        // Word count: ~${totalWords}. Return ONLY JSON with fields: title, scenes (array of {scene, text, image_prompt}).`,
       },
     ],
     temperature: 0.7,

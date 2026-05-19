@@ -1,173 +1,301 @@
 <html>
   <head>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@800;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap"
       rel="stylesheet"
     />
   </head>
 
-  <body style="margin: 0; background-color: rgb(37, 30, 30)">
+  <body>
     <div class="card">
-      <p>TODAY IN</p>
-      <h2>HISTORY</h2>
-      <img src="./flare.png" />
-      <h1>01</h1>
-      <h1 class="tst">01</h1>
-
-      <small>APRIL</small>
-
-      <div class="bottom">
-        EVERY DAY<span>. </span>EVERY STORY<span>.</span> FORVER
-        <span class="highlight">HISTORY</span>
+      <!-- IMAGE -->
+      <div class="image-wrap">
+        <img
+          class="bg-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_uoNBmzS_y2QVU3BI8-SQxL-g-XZ4_skXKg&s"
+        />
       </div>
+
+      <!-- LIGHT OVERLAY -->
+      <div class="overlay"></div>
+
+      <!-- TOP -->
+      <div class="top">
+        <div class="tag">HISTORY FILES</div>
+      </div>
+
+      <img
+        class="logo"
+        alt="@briefonix"
+        src="https://ujkcelfopwalsjonkndn.supabase.co/storage/v1/object/public/project_files/briefonix_logo%20(1).png"
+      />
+
+      <!-- MAIN -->
+      <div class="content">
+        <!-- HUGE TITLE -->
+        <div class="title">
+          Tunguska Event: The explosion that reshaped Siberia
+        </div>
+
+        <!-- SUBTEXT -->
+        <div class="subtitle">
+          Hidden truths, conspiracies and untold stories from history.
+        </div>
+      </div>
+
+      <!-- SIDE PANEL -->
+      <div class="side-panel">
+        <div class="panel-text">SWIPE →</div>
+      </div>
+
+      <!-- DECOR -->
+      <div class="ring"></div>
+      <div class="bottom-line"></div>
     </div>
 
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       :root {
-        --highlight-color: #f2b702;
-        --background-color: #0b0f1a;
-        --text-primary-color: white;
-        --text-secondary-color: #a0a4af;
-        --bg-img: url("./sdr.jpg");
+        --bg: #090909;
+        --surface: #171717;
+
+        --primary: #ffffff;
+        --secondary: #b3b3b3;
+
+        --accent: #b7ff00;
+        --accent-2: #66ff66;
+      }
+
+      body {
+        margin: 0;
+        background: black;
       }
 
       .card {
         width: 1024px;
         height: 1280px;
-        border: 2px solid var(--highlight-color);
-        background:
-          radial-gradient(rgba(0, 0, 0, 0.6)),
-          radial-gradient(transparent, black), var(--bg-img);
-        background-size: cover;
-        text-align: center;
+        position: relative;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: "Inter", sans-serif;
+      }
+
+      /* IMAGE */
+
+      .image-wrap {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+
+      .bg-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        /* filter: brightness(0.72) contrast(1.08) saturate(0.95); */
+      }
+
+      /* LIGHT OVERLAY */
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.82) 0%,
+          rgba(0, 0, 0, 0.25) 45%,
+          rgba(0, 0, 0, 0.12) 100%
+        );
+
+        z-index: 2;
+      }
+
+      /* TOP */
+
+      .top {
+        position: absolute;
+
+        top: 45px;
+        left: 45px;
+        right: 45px;
+
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        font-family: "Montserrat";
-        position: relative;
+
+        z-index: 10;
       }
 
-      .bottom {
+      .logo {
+        width: 250px;
         position: absolute;
-        bottom: 25px;
-        font-size: 25px;
-        letter-spacing: 8px;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        /* transform: translateX(50%); */
       }
 
-      .highlight {
-        color: var(--highlight-color);
+      .tag {
+        padding: 14px 24px;
+
+        border-radius: 999px;
+
+        background: rgba(0, 0, 0, 0.35);
+
+        backdrop-filter: blur(12px);
+
+        border: 1px solid rgba(183, 255, 0, 0.25);
+
+        color: var(--accent);
+
+        font-size: 22px;
+        font-weight: 700;
+
+        letter-spacing: 2px;
+
+        font-family: "Space Grotesk", sans-serif;
       }
 
-      * {
-        color: white;
-        margin: 0;
-        position: relative;
-        z-index: 100;
-        /* letter-spacing: 40px; */
-      }
-
-      img {
-        position: absolute;
-        width: 1000px;
-        top: 180px;
-        opacity: 0.8;
-      }
-
-      p {
-        font-size: 65px;
-        font-weight: 400;
-        line-height: 0px;
-        text-shadow: 0 0 100px black;
-        letter-spacing: 20px;
-      }
-
-      h2 {
-        font-size: 170px;
-        color: var(--highlight-color);
-
-        background-image: url("./gold.jpg");
-        background-size: cover;
-        background-position: center;
-
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-
-        /* optional */
-        background-clip: text;
-        color: transparent;
-        font-weight: 800;
-        letter-spacing: -2px;
-      }
-
-      h1 {
-        font-size: 450px;
-        line-height: 400px;
-        /* 0 0 100px var(--highlight-color); */
+      .number {
         color: white;
 
-        background-image: url("./silver.jpg");
-        background-size: cover;
-        background-position: top;
+        font-size: 70px;
+        font-weight: 900;
 
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        letter-spacing: -4px;
 
-        background-clip: text;
-        color: transparent;
-        font-weight: 800;
+        text-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
       }
 
-      .tst {
+      /* CONTENT */
+
+      .content {
         position: absolute;
-        top: 497px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 0;
+
+        left: 60px;
+        right: 120px;
+        bottom: 90px;
+
+        z-index: 10;
+      }
+
+      .title {
+        color: white;
+
+        font-size: 108px;
+        line-height: 0.9;
+
+        font-weight: 900;
+
+        letter-spacing: -7px;
+
+        text-transform: uppercase;
+
+        margin-bottom: 35px;
+
+        text-shadow: 0px 8px 30px rgba(0, 0, 0, 0.7);
+      }
+
+      .title::after {
+        content: "";
+
         display: block;
-        text-shadow:
-          0px 0px 50px black,
-          0px 0px 70px var(--highlight-color);
-        border-bottom: 1px solid var(--highlight-color);
+
+        width: 260px;
+        height: 10px;
+
+        border-radius: 999px;
+
+        margin-top: 30px;
+
+        background: linear-gradient(to right, var(--accent), var(--accent-2));
+
+        box-shadow: 0 0 30px rgba(183, 255, 0, 0.4);
       }
 
-      small {
-        font-size: 80px;
-        line-height: 50px;
-        text-shadow: 0 0 100px black;
-        color: var(--highlight-color);
+      .subtitle {
+        max-width: 720px;
+
+        color: rgba(255, 255, 255, 0.88);
+
+        font-size: 44px;
+        line-height: 1.28;
+
         font-weight: 600;
-        letter-spacing: 20px;
-        margin-top: 50px;
+        text-shadow: 0px 4px 18px rgba(0, 0, 0, 0.7);
+      }
+
+      /* SIDE PANEL */
+
+      .side-panel {
+        position: absolute;
+
+        top: 0;
+        right: 0;
+
+        width: 90px;
+        height: 100%;
+
+        background: linear-gradient(to left, rgba(0, 0, 0, 0.45), transparent);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        z-index: 10;
+      }
+
+      .panel-text {
+        color: var(--accent);
+
+        font-size: 22px;
+        font-weight: 800;
+
+        letter-spacing: 5px;
+
+        transform: rotate(90deg);
+
+        white-space: nowrap;
+      }
+
+      /* RING */
+
+      .ring {
+        position: absolute;
+
+        width: 420px;
+        height: 420px;
+
+        border-radius: 50%;
+
+        border: 2px solid rgba(183, 255, 0, 0.12);
+
+        top: 180px;
+        right: -140px;
+
+        z-index: 3;
+      }
+
+      /* BOTTOM LINE */
+
+      .bottom-line {
+        position: absolute;
+
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 10px;
+
+        background: linear-gradient(to right, var(--accent), var(--accent-2));
+
+        z-index: 20;
       }
     </style>
-    <script>
-      function autoResizeText() {
-        const el = document.querySelector(".text-wrap");
-        const txt = document.querySelector(".text");
-
-        let fontSize = 75;
-        const minSize = 14;
-
-        while (fontSize > minSize) {
-          txt.style.fontSize = fontSize + "px";
-
-          const isOverflowing =
-            el.scrollHeight > el.clientHeight ||
-            el.scrollWidth > el.clientWidth;
-
-          console.log(isOverflowing);
-
-          if (!isOverflowing) break;
-
-          fontSize -= 2;
-        }
-      }
-
-      // 🔥 Wait for fonts + DOM properly
-      document.fonts.ready.then(() => {
-        autoResizeText();
-      });
-    </script>
   </body>
 </html>

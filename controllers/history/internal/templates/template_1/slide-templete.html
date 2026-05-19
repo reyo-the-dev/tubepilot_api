@@ -1,108 +1,351 @@
 <html>
   <head>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@800;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
   </head>
 
-  <body style="margin: 0; background-color: rgb(37, 30, 30)">
+  <body>
     <div class="card">
+      <!-- BACKGROUND -->
+      <div class="bg"></div>
+
+      <!-- IMAGE -->
       <div class="image-wrap">
-        <div class="trans"></div>
-        <img src="./sdr.jpg" />
+        <img
+          src="https://image.runpod.ai/5/19/lePQa47Fuw/dc733aee-4f0b-46f1-a2ee-f5809a5f2372.jpeg"
+        />
       </div>
-      <div class="text-wrap">
-        <div class="text">
-          <h1>1992</h1>
-          World War II: Adolf <span>Hitler</span> marries his longtime partner
-          <span>Eva Braun</span> in a Berlin bunker and designates
-          <span>Admiral Karl Dönitz</span> as his successor.
+
+      <!-- OVERLAY -->
+      <div class="overlay"></div>
+
+      <!-- NOISE -->
+      <div class="noise"></div>
+
+      <!-- TOP -->
+      <div class="top-bar">
+        <div class="category">MYSTERY ARCHIVES</div>
+
+        <div class="slide-no">01</div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="content">
+        <!-- TITLE -->
+        <div class="title-wrap">
+          <div class="title-bg">HITLER</div>
+
+          <div class="title">Hitler - 1977</div>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="desc-wrap">
+          <div class="desc">
+            During the collapse of
+            <span>World War II</span>,
+            <span>Adolf Hitler</span>
+            secretly married
+            <span>Eva Braun</span>
+            inside a bunker before appointing
+            <span>Admiral Karl Dönitz</span>
+            as Germany's next leader.
+          </div>
         </div>
       </div>
+
+      <!-- DECOR -->
+      <div class="circle"></div>
+      <div class="gradient-line"></div>
     </div>
 
     <style>
       * {
         box-sizing: border-box;
       }
+
       :root {
-        /* #1f1f1f */
-        --highlight-color: #f2b702;
-        --background-color: #0d0d0d;
-        --text-primary-color: white;
-        --text-secondary-color: #a0a4af;
-        --bg-img: url("bg.png");
+        --bg: #090909;
+        --surface: #171717;
+        --primary: #ffffff;
+        --secondary: #b3b3b3;
+        --accent: #b7ff00;
+        --accent-2: #66ff66;
+      }
+
+      body {
+        margin: 0;
+        background: black;
       }
 
       .card {
         width: 1024px;
         height: 1280px;
-        font-family: "Montserrat";
+
         position: relative;
-        position: relative;
+        overflow: hidden;
+
+        background: var(--bg);
+
+        font-family: "Inter", sans-serif;
       }
 
+      /* BG */
+
+      .bg {
+        position: absolute;
+        inset: 0;
+
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(0, 255, 213, 0.15),
+            transparent 35%
+          ),
+          radial-gradient(
+            circle at bottom left,
+            rgba(0, 166, 255, 0.12),
+            transparent 35%
+          ),
+          linear-gradient(to bottom, #0f1117, #070707);
+      }
+
+      /* IMAGE */
+
       .image-wrap {
-        position: relative;
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 1024px;
+
+        z-index: 1;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       img {
-        height: 768px;
         width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+
+        /* filter: brightness(0.72) contrast(1.08) saturate(0.9) grayscale(0.08); */
       }
 
-      .text-wrap {
-        height: 512px;
-        background-color: var(--background-color);
-        border-top: 2px solid var(--highlight-color);
+      /* OVERLAY */
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0.9) 18%,
+          rgba(0, 0, 0, 0.45) 48%,
+          rgba(0, 0, 0, 0.1) 72%,
+          rgba(0, 0, 0, 0.55) 100%
+        );
+
+        z-index: 2;
       }
 
-      .text {
+      /* NOISE */
+
+      .noise {
+        position: absolute;
+        inset: 0;
+
+        opacity: 0.03;
+
+        background-image: repeating-radial-gradient(
+          circle at 0 0,
+          transparent 0,
+          #fff 1px,
+          transparent 2px
+        );
+
+        background-size: 12px 12px;
+
+        z-index: 3;
+      }
+
+      /* TOP BAR */
+
+      .top-bar {
+        position: absolute;
+
+        top: 50px;
+        left: 50px;
+        right: 50px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        z-index: 10;
+      }
+
+      .category {
+        padding: 14px 24px;
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        background: rgba(255, 255, 255, 0.05);
+
+        backdrop-filter: blur(14px);
+
+        border-radius: 999px;
+
+        color: var(--accent);
+
+        font-size: 22px;
+        font-weight: 700;
+
+        letter-spacing: 2px;
+
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .slide-no {
+        font-size: 42px;
+        font-weight: 900;
+
+        color: rgba(255, 255, 255, 0.25);
+
+        letter-spacing: -2px;
+      }
+
+      /* CONTENT */
+
+      .content {
+        position: absolute;
+
+        left: 55px;
+        right: 55px;
+        bottom: 65px;
+
+        z-index: 10;
+      }
+
+      /* TITLE WRAP */
+
+      .title-wrap {
+        position: relative;
+
+        margin-bottom: 35px;
+      }
+
+      .title-bg {
+        position: absolute;
+
+        top: -90px;
+        left: -10px;
+
+        font-size: 150px;
+        font-weight: 900;
+
+        color: rgba(255, 255, 255, 0.04);
+
+        letter-spacing: -12px;
+
+        text-transform: uppercase;
+
+        pointer-events: none;
+      }
+
+      .title {
+        position: relative;
+
         color: white;
-        padding: 0px 30px 40px 30px;
-        font-weight: 600;
-        text-align: center;
+
+        font-size: 100px;
+        line-height: 0.88;
+
+        font-weight: 900;
+
+        letter-spacing: -6px;
+
+        text-transform: uppercase;
+
+        text-shadow: 0px 8px 30px rgba(0, 0, 0, 0.75);
       }
 
-      h1 {
-        margin: 0;
-        background-image: url("./gold.jpg");
-        background-size: cover;
-        background-position: center;
+      /* DESC */
 
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+      .desc-wrap {
+        height: 300px;
+        overflow: hidden;
 
-        /* optional */
-        background-clip: text;
-        color: transparent;
-        /* font-size: 100px; */
+        max-width: 900px;
       }
 
-      span {
-        color: var(--highlight-color);
+      .desc {
+        color: rgba(255, 255, 255, 0.92);
+
+        font-weight: 700;
+
+        line-height: 1.12;
+
+        text-shadow: 0px 4px 18px rgba(0, 0, 0, 0.8);
+      }
+
+      .highlight {
+        color: var(--accent);
         font-weight: 800;
+      }
 
-        background-image: url("./gold.jpg");
-        background-size: cover;
-        background-position: center;
+      /* DECOR */
 
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+      .circle {
+        position: absolute;
 
-        /* optional */
-        background-clip: text;
-        color: transparent;
+        width: 260px;
+        height: 260px;
+
+        border-radius: 50%;
+
+        border: 2px solid rgba(255, 255, 255, 0.06);
+
+        right: -80px;
+        bottom: 240px;
+
+        z-index: 0;
+      }
+
+      .gradient-line {
+        position: absolute;
+
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 10px;
+
+        background: linear-gradient(
+          to right,
+          var(--accent),
+          var(--accent-2),
+          white
+        );
+
+        z-index: 20;
       }
     </style>
+
     <script>
       function autoResizeText() {
-        const el = document.querySelector(".text-wrap");
-        const txt = document.querySelector(".text");
+        const el = document.querySelector(".desc-wrap");
+        const txt = document.querySelector(".desc");
 
-        let fontSize = 75;
-        const minSize = 14;
+        let fontSize = 58;
+        const minSize = 22;
 
         while (fontSize > minSize) {
           txt.style.fontSize = fontSize + "px";
@@ -111,15 +354,12 @@
             el.scrollHeight > el.clientHeight ||
             el.scrollWidth > el.clientWidth;
 
-          console.log(isOverflowing);
-
           if (!isOverflowing) break;
 
           fontSize -= 2;
         }
       }
 
-      // 🔥 Wait for fonts + DOM properly
       document.fonts.ready.then(() => {
         autoResizeText();
       });

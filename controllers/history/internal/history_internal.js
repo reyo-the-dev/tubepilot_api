@@ -20,8 +20,8 @@ const internalGenerateimageForHistorySlide = async ({ prompt }) => {
               no text
             `,
         image_format: "jpeg",
-        width: 800,
-        height: 600,
+        width: 1024,
+        height: 1024,
       },
     },
     {
