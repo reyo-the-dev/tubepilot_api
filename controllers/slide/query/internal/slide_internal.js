@@ -1,7 +1,6 @@
 const { default: axios } = require("axios");
 const puppeteer = require("puppeteer-core");
 const chromium = require("@sparticuz/chromium");
-const fs = require("fs");
 const { v4 } = require("uuid");
 const { supabase } = require("../../../../config/supabase");
 const { title } = require("process");
@@ -32,8 +31,6 @@ const internalGenerateSlide = async (slideData, isIntro) => {
   });
 
   const buffer = await page.screenshot({ type: "png" });
-
-  fs.writeFileSync("screenshot.png", buffer);
 
   await browser.close();
   return buffer;
