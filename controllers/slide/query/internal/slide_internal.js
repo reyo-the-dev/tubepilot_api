@@ -83,181 +83,89 @@ function generateTemplate(slideData, isIntro = false) {
   );
 
   if (!isIntro) {
-    return `<html>
+    return `
+    <!doctype html>
+<html lang="en">
   <head>
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600&display=swap"
       rel="stylesheet"
     />
   </head>
-
   <body>
     <div class="card">
-      <!-- BACKGROUND -->
-      <div class="bg"></div>
+      <!-- Background -->
 
-      <!-- IMAGE -->
-      <div class="image-wrap">
-        <img
-          src="${imageUrl}"
-        />
-      </div>
+      <img
+        class="bg-image"
+        src="
+   ${imageUrl}
+      "
+        alt="Sci Fi Background"
+      />
 
-      <!-- OVERLAY -->
       <div class="overlay"></div>
-
-      <!-- NOISE -->
-      <div class="noise"></div>
-
-      <!-- TOP -->
-   
-
-      <!-- MAIN CONTENT -->
-      <div class="content">
-        <!-- TITLE -->
-        <div class="title-wrap">
-          <div class="title-bg">${title}</div>
-
-          <div class="title">${title}</div>
-        </div>
-
-        <!-- DESCRIPTION -->
-        <div class="desc-wrap">
-          <div class="desc">
-           ${formattedText}
-          </div>
-        </div>
+      <div class="logo-line">
+        <hr />
+        <img
+          src="https://ujkcelfopwalsjonkndn.supabase.co/storage/v1/object/public/project_files/briefonix_logo%20(1).png"
+          alt="logo"
+          class="logo"
+        />
+        <hr />
       </div>
 
-      <!-- DECOR -->
-      <div class="circle"></div>
-      <div class="gradient-line"></div>
+      <!-- Title -->
+      <div class="title-wrapper">
+        <div class="title">${title}</div>
+        <div class="text">
+          ${formattedText}
+        </div>
+
+        <div class="pattern"></div>
+      </div>
     </div>
 
     <style>
-      * {
-        box-sizing: border-box;
-      }
-
       :root {
         --bg: #090909;
         --surface: #171717;
+
         --primary: #ffffff;
         --secondary: #b3b3b3;
+
         --accent: #b7ff00;
         --accent-2: #66ff66;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
       body {
         margin: 0;
         background: black;
+        font-family: "Montserrat", sans-serif;
       }
 
       .card {
         width: 1024px;
         height: 1280px;
-
         position: relative;
         overflow: hidden;
-
-        background: var(--bg);
-
-        font-family: "Inter", sans-serif;
+        background: #000;
+        
+        color: white;
       }
 
-      /* BG */
-
-      .bg {
-        position: absolute;
-        inset: 0;
-
-        background:
-          radial-gradient(
-            circle at top right,
-            rgba(0, 255, 213, 0.15),
-            transparent 35%
-          ),
-          radial-gradient(
-            circle at bottom left,
-            rgba(0, 166, 255, 0.12),
-            transparent 35%
-          ),
-          linear-gradient(to bottom, #0f1117, #070707);
-      }
-
-      /* IMAGE */
-
-      .image-wrap {
+      .top {
         position: absolute;
 
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 1024px;
-
-        z-index: 1;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-
-        object-fit: contain;
-
-        /* filter: brightness(0.72) contrast(1.08) saturate(0.9) grayscale(0.08); */
-      }
-
-      /* OVERLAY */
-
-      .overlay {
-        position: absolute;
-        inset: 0;
-
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 1) 0%,
-          rgba(0, 0, 0, 0.9) 18%,
-          rgba(0, 0, 0, 0.45) 48%,
-          rgba(0, 0, 0, 0.1) 72%,
-          rgba(0, 0, 0, 0.55) 100%
-        );
-
-        z-index: 2;
-      }
-
-      /* NOISE */
-
-      .noise {
-        position: absolute;
-        inset: 0;
-
-        opacity: 0.03;
-
-        background-image: repeating-radial-gradient(
-          circle at 0 0,
-          transparent 0,
-          #fff 1px,
-          transparent 2px
-        );
-
-        background-size: 12px 12px;
-
-        z-index: 3;
-      }
-
-      /* TOP BAR */
-
-      .top-bar {
-        position: absolute;
-
-        top: 50px;
-        left: 50px;
-        right: 50px;
+        top: 45px;
+        left: 45px;
+        right: 45px;
 
         display: flex;
         justify-content: space-between;
@@ -266,18 +174,18 @@ function generateTemplate(slideData, isIntro = false) {
         z-index: 10;
       }
 
-      .category {
+      .tag {
         padding: 14px 24px;
-
-        border: 1px solid rgba(255, 255, 255, 0.12);
-
-        background: rgba(255, 255, 255, 0.05);
-
-        backdrop-filter: blur(14px);
 
         border-radius: 999px;
 
-        color: var(--accent);
+        background: rgba(0, 0, 0, 0.35);
+
+        backdrop-filter: blur(12px);
+
+        border: 1px solid rgba(183, 255, 0, 0.25);
+
+        color: var(--accent-2);
 
         font-size: 22px;
         font-weight: 700;
@@ -287,139 +195,127 @@ function generateTemplate(slideData, isIntro = false) {
         font-family: "Space Grotesk", sans-serif;
       }
 
-      .slide-no {
-        font-size: 42px;
-        font-weight: 900;
-
-        color: rgba(255, 255, 255, 0.25);
-
-        letter-spacing: -2px;
-      }
-
-      /* CONTENT */
-
-      .content {
+      .logo-line {
+        z-index: 100;
         position: absolute;
-
-        left: 55px;
-        right: 55px;
-        bottom: 65px;
-
-        z-index: 10;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 30px;
       }
 
-      /* TITLE WRAP */
-
-      .title-wrap {
-        position: relative;
-
-        margin-bottom: 35px;
+      .logo {
+        width: 250px;
       }
 
-      .title-bg {
+      hr {
+        width: 100%;
+        opacity: 1;
+        height: 3px;
+        background-color: var(--accent-2);
+        border: none;
+      }
+
+      .bg-image {
         position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 1024px;
+        object-fit: cover;
+      }
 
-        top: -90px;
-        left: -10px;
+      /* Dark overlay */
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          transparent,
+          transparent,
+          rgba(0, 0, 0, 0.5),
+          black
+        );
+      }
 
-        font-size: 150px;
-        font-weight: 900;
-
-        color: rgba(255, 255, 255, 0.04);
-
-        letter-spacing: -12px;
-
-        text-transform: uppercase;
-
-        pointer-events: none;
+      /* Main title */
+      .title-wrapper {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        text-align: center;
+        background: linear-gradient(transparent, black, black, black);
+        max-height: 480px;
+        display: flex;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 40px 40px 40px;
       }
 
       .title {
-        position: relative;
-
-        color: white;
-
-        font-size: 100px;
-        line-height: 0.88;
-
-        font-weight: 900;
-
-        letter-spacing: -6px;
-
+        font-size: 65px;
+        line-height: 1;
         text-transform: uppercase;
-
-        text-shadow: 0px 8px 30px rgba(0, 0, 0, 0.75);
+        letter-spacing: 2px;
+        text-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        font-family: "Anton";
+        margin:16px 0;
       }
 
-      /* DESC */
-
-      .desc-wrap {
-        height: 300px;
-        overflow: hidden;
-
-        max-width: 900px;
-      }
-
-      .desc {
-        color: rgba(255, 255, 255, 0.92);
-
-        font-weight: 700;
-
-        line-height: 1.12;
-
-        text-shadow: 0px 4px 18px rgba(0, 0, 0, 0.8);
+      .text {
+        text-transform: uppercase;
+        padding-bottom: 20px;
+        font-weight: 600;
+        letter-spacing: 1.85px;
       }
 
       .highlight {
-        color: var(--accent);
-        font-weight: 800;
+        color: var(--accent-2);
       }
 
-      /* DECOR */
-
-      .circle {
+      /* Tiny bottom pattern */
+      .pattern {
         position: absolute;
-
-        width: 260px;
-        height: 260px;
-
-        border-radius: 50%;
-
-        border: 2px solid rgba(255, 255, 255, 0.06);
-
-        right: -80px;
-        bottom: 240px;
-
-        z-index: 0;
-      }
-
-      .gradient-line {
-        position: absolute;
-
         bottom: 0;
-        left: 0;
-
         width: 100%;
-        height: 10px;
-
-        background: linear-gradient(
-          to right,
-          var(--accent),
-          var(--accent-2),
-          white
+        height: 100%;
+        opacity: 0.9;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.26) 1px,
+          transparent 1px
         );
-
-        z-index: 20;
+        background-size: 22px 22px;
+        left: 0;
       }
     </style>
 
     <script>
-      function autoResizeText() {
-        const el = document.querySelector(".desc-wrap");
-        const txt = document.querySelector(".desc");
+      const textWrap = document.querySelector(".title-wrapper");
+      const pattern = document.querySelector(".pattern");
+      const logoLine = document.querySelector(".logo-line");
 
-        let fontSize = 58;
-        const minSize = 22;
+      function alignLogo() {
+        const h = textWrap.clientHeight;
+        logoLine.style.bottom = h + "px";
+      }
+
+      function resizePattern() {
+        const h = textWrap.clientHeight;
+        const w = textWrap.clientWidth;
+
+        console.log(h);
+        console.log(w);
+
+        pattern.style.height = h;
+        pattern.style.width = w;
+      }
+
+      function autoResizeText() {
+        const el = document.querySelector(".title-wrapper");
+        const txt = document.querySelector(".text");
+
+        let fontSize = 150;
+        const minSize = 10;
 
         while (fontSize > minSize) {
           txt.style.fontSize = fontSize + "px";
@@ -436,75 +332,61 @@ function generateTemplate(slideData, isIntro = false) {
 
       document.fonts.ready.then(() => {
         autoResizeText();
+        resizePattern();
+        alignLogo();
       });
     </script>
   </body>
 </html>
-`;
+
+    `;
   }
 
-  return `
-<html>
+  return `<!doctype html>
+<html lang="en">
   <head>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600&display=swap"
       rel="stylesheet"
     />
   </head>
-
   <body>
     <div class="card">
-      <!-- IMAGE -->
-      <div class="image-wrap">
-        <img
-        class="bg-img"
-          src="${imageUrl}"
-        />
-      </div>
+      <!-- Background -->
 
-      <!-- LIGHT OVERLAY -->
-      <div class="overlay"></div>
-
-      <!-- TOP -->
       <div class="top">
         <div class="tag">${category}</div>
       </div>
 
-      
       <img
-        class="logo"
-        alt="@briefonix"
-        src="https://ujkcelfopwalsjonkndn.supabase.co/storage/v1/object/public/project_files/briefonix_logo%20(1).png"
+        class="bg-image"
+        src="
+    ${imageUrl}
+      "
+        alt="Sci Fi Background"
       />
 
-      <!-- MAIN -->
-      <div class="content">
-        <!-- HUGE TITLE -->
+      <div class="overlay"></div>
+      <div class="logo-line">
+        <hr />
+        <img
+          src="https://ujkcelfopwalsjonkndn.supabase.co/storage/v1/object/public/project_files/briefonix_logo%20(1).png"
+          alt="logo"
+          class="logo"
+        />
+        <hr />
+      </div>
+
+      <!-- Title -->
+      <div class="title-wrapper">
         <div class="title">
-          ${text}
+          ${formattedText}
         </div>
-
-        <!-- SUBTEXT -->
-        <div class="subtitle">
-          ${sub_title}
-        </div>
+        <div class="pattern"></div>
       </div>
-
-      <!-- SIDE PANEL -->
-      <div class="side-panel">
-        <div class="panel-text">SWIPE →</div>
-      </div>
-
-      <!-- DECOR -->
-      <div class="ring"></div>
-      <div class="bottom-line"></div>
     </div>
 
     <style>
-      * {
-        box-sizing: border-box;
-      }
-
       :root {
         --bg: #090909;
         --surface: #171717;
@@ -516,9 +398,16 @@ function generateTemplate(slideData, isIntro = false) {
         --accent-2: #66ff66;
       }
 
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         background: black;
+        font-family: "Montserrat", sans-serif;
       }
 
       .card {
@@ -526,43 +415,10 @@ function generateTemplate(slideData, isIntro = false) {
         height: 1280px;
         position: relative;
         overflow: hidden;
-        background: var(--bg);
-        font-family: "Inter", sans-serif;
+        background: #000;
+        
+        color: white;
       }
-
-      /* IMAGE */
-
-      .image-wrap {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-      }
-
-      .bg-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-
-        /* filter: brightness(0.72) contrast(1.08) saturate(0.95); */
-      }
-
-      /* LIGHT OVERLAY */
-
-      .overlay {
-        position: absolute;
-        inset: 0;
-
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.82) 0%,
-          rgba(0, 0, 0, 0.25) 45%,
-          rgba(0, 0, 0, 0.12) 100%
-        );
-
-        z-index: 2;
-      }
-
-      /* TOP */
 
       .top {
         position: absolute;
@@ -578,15 +434,6 @@ function generateTemplate(slideData, isIntro = false) {
         z-index: 10;
       }
 
-       .logo {
-        width: 250px;
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        /* transform: translateX(50%); */
-      }
-
       .tag {
         padding: 14px 24px;
 
@@ -598,7 +445,7 @@ function generateTemplate(slideData, isIntro = false) {
 
         border: 1px solid rgba(183, 255, 0, 0.25);
 
-        color: var(--accent);
+        color: var(--accent-2);
 
         font-size: 22px;
         font-weight: 700;
@@ -608,145 +455,141 @@ function generateTemplate(slideData, isIntro = false) {
         font-family: "Space Grotesk", sans-serif;
       }
 
-      .number {
-        color: white;
-
-        font-size: 70px;
-        font-weight: 900;
-
-        letter-spacing: -4px;
-
-        text-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
+      .logo-line {
+        z-index: 100;
+        position: absolute;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 30px;
       }
 
-      /* CONTENT */
+      .logo {
+        width: 250px;
+      }
 
-      .content {
+      hr {
+        width: 100%;
+        opacity: 1;
+        height: 3px;
+        background-color: var(--accent-2);
+        border: none;
+      }
+
+      .bg-image {
         position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 1024px;
+        object-fit: cover;
+      }
 
-        left: 60px;
-        right: 120px;
-        bottom: 90px;
+      /* Dark overlay */
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          transparent,
+          transparent,
+          rgba(0, 0, 0, 0.5),
+          black
+        );
+      }
 
-        z-index: 10;
+      /* Main title */
+      .title-wrapper {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        
+        
+        text-align: center;
+        background: linear-gradient(transparent, black, black, black);
+        max-height: 450px;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        /* border-top: 1px solid var(--accent-2); */
       }
 
       .title {
-        color: white;
-
-        font-size: 108px;
-        line-height: 0.9;
-
-        font-weight: 900;
-
-        letter-spacing: -7px;
-
+        /* font-family: "Anton", sans-serif; */
+        font-size: 88px;
+        line-height: 1;
         text-transform: uppercase;
-
-        margin-bottom: 35px;
-
-        text-shadow: 0px 8px 30px rgba(0, 0, 0, 0.7);
-      }
-
-      .title::after {
-        content: "";
-
-        display: block;
-
-        width: 260px;
-        height: 10px;
-
-        border-radius: 999px;
-
-        margin-top: 30px;
-
-        background: linear-gradient(to right, var(--accent), var(--accent-2));
-
-        box-shadow: 0 0 30px rgba(183, 255, 0, 0.4);
-      }
-
-      .subtitle {
-        max-width: 720px;
-
-        color: rgba(255, 255, 255, 0.88);
-
-        font-size: 44px;
-        line-height: 1.28;
-
+        letter-spacing: 1.5px;
+        text-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
         font-weight: 600;
-        text-shadow: 0px 4px 18px rgba(0, 0, 0, 0.7);
+        padding: 40px;
+
       }
 
-      /* SIDE PANEL */
+      .highlight {
+        color: var(--accent-2);
+      }
 
-      .side-panel {
+      /* Tiny bottom pattern */
+      .pattern {
         position: absolute;
-
-        top: 0;
-        right: 0;
-
-        width: 90px;
-        height: 100%;
-
-        background: linear-gradient(to left, rgba(0, 0, 0, 0.45), transparent);
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        z-index: 10;
-      }
-
-      .panel-text {
-        color: var(--accent);
-
-        font-size: 22px;
-        font-weight: 800;
-
-        letter-spacing: 5px;
-
-        transform: rotate(90deg);
-
-        white-space: nowrap;
-      }
-
-      /* RING */
-
-      .ring {
-        position: absolute;
-
-        width: 420px;
-        height: 420px;
-
-        border-radius: 50%;
-
-        border: 2px solid rgba(183, 255, 0, 0.12);
-
-        top: 180px;
-        right: -140px;
-
-        z-index: 3;
-      }
-
-      /* BOTTOM LINE */
-
-      .bottom-line {
-        position: absolute;
-
         bottom: 0;
-        left: 0;
-
         width: 100%;
-        height: 10px;
-
-        background: linear-gradient(to right, var(--accent), var(--accent-2));
-
-        z-index: 20;
+        height: 100%;
+        opacity: 0.9;
+        background-image: radial-gradient(white 1px, transparent 1px);
+        background-size: 22px 22px;
+        left: 0;
       }
     </style>
+
+    <script>
+      const textWrap = document.querySelector(".title-wrapper");
+      const pattern = document.querySelector(".pattern");
+      const logoLine = document.querySelector(".logo-line");
+
+      function alignLogo() {
+        const h = textWrap.clientHeight;
+        logoLine.style.bottom = h + "px";
+      }
+
+      function resizePattern() {
+        const h = textWrap.clientHeight;
+        const w = textWrap.clientWidth;
+
+        console.log(h);
+        console.log(w);
+
+        pattern.style.height = h;
+        pattern.style.width = w;
+      }
+
+      function autoResizeText() {
+        const el = document.querySelector(".title-wrapper");
+        const txt = document.querySelector(".title");
+
+        let fontSize = 150;
+        const minSize = 10;
+
+        while (fontSize > minSize) {
+          txt.style.fontSize = fontSize + "px";
+
+          const isOverflowing =
+            el.scrollHeight > el.clientHeight ||
+            el.scrollWidth > el.clientWidth;
+
+          if (!isOverflowing) break;
+
+          fontSize -= 2;
+        }
+      }
+
+      document.fonts.ready.then(() => {
+        autoResizeText();
+        resizePattern();
+        alignLogo();
+      });
+    </script>
   </body>
 </html>
-
 `;
 }
 

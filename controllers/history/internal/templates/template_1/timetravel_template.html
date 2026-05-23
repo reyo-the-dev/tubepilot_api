@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Historical Slide</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0b0b0b;
+        font-family: "Manrope", sans-serif;
+      }
+
+      .slide {
+        width: 1080px;
+        height: 1350px;
+        position: relative;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .slide img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.03);
+      }
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.95) 5%,
+          rgba(0, 0, 0, 0.45) 45%,
+          rgba(0, 0, 0, 0.15) 100%
+        );
+        z-index: 1;
+      }
+
+      .top-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        z-index: 3;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 50px 55px;
+      }
+
+      .brand {
+        color: white;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+      }
+
+      .year {
+        color: white;
+        font-size: 22px;
+        font-weight: 700;
+
+        padding: 14px 22px;
+
+        border: 1px solid rgba(255, 255, 255, 0.2);
+
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+      }
+
+      .content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        z-index: 2;
+
+        padding: 65px;
+      }
+
+      .city {
+        font-size: 34px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 14px;
+        font-weight: 500;
+      }
+
+      .title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 150px;
+        line-height: 0.9;
+        color: white;
+        margin-bottom: 28px;
+        letter-spacing: 2px;
+      }
+
+      .description {
+        font-size: 32px;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.88);
+        max-width: 880px;
+      }
+
+      .bottom-line {
+        width: 140px;
+        height: 6px;
+        background: white;
+        margin-bottom: 34px;
+      }
+
+      .grain {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        opacity: 0.08;
+        pointer-events: none;
+
+        background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+      }
+    </style>
+  </head>
+  <body>
+    <section class="slide">
+      <!-- IMAGE -->
+      <img src="newyork-1800.jpg" alt="America During 1800s" />
+
+      <!-- OVERLAY -->
+      <div class="overlay"></div>
+
+      <!-- FILM GRAIN -->
+      <div class="grain"></div>
+
+      <!-- TOP BAR -->
+      <div class="top-bar">
+        <div class="brand">TIMEFRAME</div>
+
+        <div class="year">1800s</div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="content">
+        <div class="city">New York City</div>
+
+        <div class="bottom-line"></div>
+
+        <h1 class="title">
+          BEFORE<br />
+          MODERN<br />
+          AMERICA
+        </h1>
+
+        <p class="description">
+          Horse carriages ruled Manhattan long before skyscrapers transformed
+          the skyline.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="card">
+      <!-- Background -->
+
+      <div class="top">
+        <div class="tag">HISTORY FILES</div>
+      </div>
+
+      <img
+        class="bg-image"
+        src="
+    https://s.yimg.com/ny/api/res/1.2/lNGJ8NeL6j2X39Kuj1zo.Q--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTYzOTtjZj13ZWJw/https://media.zenfs.com/en/cbc.ca/34ebc3067b07b604526a98675d81fc20
+      "
+        alt="Sci Fi Background"
+      />
+
+      <div class="overlay"></div>
+      <div class="logo-line">
+        <hr />
+        <img
+          src="https://ujkcelfopwalsjonkndn.supabase.co/storage/v1/object/public/project_files/briefonix_logo%20(1).png"
+          alt="logo"
+          class="logo"
+        />
+        <hr />
+      </div>
+
+      <!-- Title -->
+      <div class="title-wrapper">
+        <div class="title">
+          even more facts that are
+
+          <span>true</span>
+        </div>
+        <div class="pattern"></div>
+      </div>
+    </div>
+
+    <style>
+      :root {
+        --bg: #090909;
+        --surface: #171717;
+
+        --primary: #ffffff;
+        --secondary: #b3b3b3;
+
+        --accent: #b7ff00;
+        --accent-2: #66ff66;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: black;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .card {
+        width: 1024px;
+        height: 1280px;
+        position: relative;
+        overflow: hidden;
+        background: #000;
+        border: 1px solid white;
+        color: white;
+      }
+
+      .top {
+        position: absolute;
+
+        top: 45px;
+        left: 45px;
+        right: 45px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        z-index: 10;
+      }
+
+      .tag {
+        padding: 14px 24px;
+
+        border-radius: 999px;
+
+        background: rgba(0, 0, 0, 0.35);
+
+        backdrop-filter: blur(12px);
+
+        border: 1px solid rgba(183, 255, 0, 0.25);
+
+        color: var(--accent-2);
+
+        font-size: 22px;
+        font-weight: 700;
+
+        letter-spacing: 2px;
+
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .logo-line {
+        z-index: 100;
+        position: absolute;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .logo {
+        width: 250px;
+      }
+
+      hr {
+        width: 100%;
+        opacity: 1;
+        height: 3px;
+        background-color: var(--accent-2);
+        border: none;
+      }
+
+      .bg-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 1024px;
+        object-fit: cover;
+      }
+
+      /* Dark overlay */
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          transparent,
+          transparent,
+          rgba(0, 0, 0, 0.5),
+          black
+        );
+      }
+
+      /* Main title */
+      .title-wrapper {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        padding: 40px;
+        text-align: center;
+        background: linear-gradient(transparent, black, black, black);
+        max-height: 450px;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        /* border-top: 1px solid var(--accent-2); */
+      }
+
+      .title {
+        /* font-family: "Anton", sans-serif; */
+        font-size: 88px;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        text-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        font-weight: 600;
+      }
+
+      span {
+        color: var(--accent-2);
+      }
+
+      /* Tiny bottom pattern */
+      .pattern {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.9;
+        background-image: radial-gradient(white 1px, transparent 1px);
+        background-size: 22px 22px;
+        left: 0;
+      }
+    </style>
+
+    <script>
+      const textWrap = document.querySelector(".title-wrapper");
+      const pattern = document.querySelector(".pattern");
+      const logoLine = document.querySelector(".logo-line");
+
+      function alignLogo() {
+        const h = textWrap.clientHeight;
+        logoLine.style.bottom = h + "px";
+      }
+
+      function resizePattern() {
+        const h = textWrap.clientHeight;
+        const w = textWrap.clientWidth;
+
+        console.log(h);
+        console.log(w);
+
+        pattern.style.height = h;
+        pattern.style.width = w;
+      }
+
+      function autoResizeText() {
+        const el = document.querySelector(".title-wrapper");
+        const txt = document.querySelector(".title");
+
+        let fontSize = 150;
+        const minSize = 10;
+
+        while (fontSize > minSize) {
+          txt.style.fontSize = fontSize + "px";
+
+          const isOverflowing =
+            el.scrollHeight > el.clientHeight ||
+            el.scrollWidth > el.clientWidth;
+
+          if (!isOverflowing) break;
+
+          fontSize -= 2;
+        }
+      }
+
+      document.fonts.ready.then(() => {
+        autoResizeText();
+        resizePattern();
+        alignLogo();
+      });
+    </script>
+  </body>
+</html>
